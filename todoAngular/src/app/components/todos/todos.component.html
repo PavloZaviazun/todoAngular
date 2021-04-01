@@ -1,0 +1,16 @@
+<div>
+  <form [formGroup]="formSearch">
+    <div>
+      <label>
+        <input name="search" formControlName="search" type="search" (keyup)="sendData()" placeholder="Title search">
+      </label>
+    </div>
+  </form>
+</div>
+<button (click)="sortByID()">{{filterIdFlag ? 'ASC id' : 'DSC id'}}</button>
+<button (click)="sortByDate()">{{filterDateFlag ? 'ASC final date' : 'DSC final date'}}</button>
+<div *ngFor="let todo of todos | async">
+  <app-todo [todo]="todo" [id]="id"></app-todo>
+</div>
+<app-createtodo [id]="id"></app-createtodo>
+

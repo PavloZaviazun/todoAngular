@@ -1,0 +1,17 @@
+<div>
+<form [formGroup]="formLogin" (ngSubmit)="sendData()">
+  <div>
+    <label>
+      <input name="username" formControlName="username" type="text" placeholder="username">
+    </label>
+  </div>
+  <div>
+    <label>
+      <input name="password" formControlName="password" type="text" placeholder="password">
+    </label>
+  </div>
+  <div>
+    <button type="submit">Apply</button>
+  </div>
+</form>
+</div>

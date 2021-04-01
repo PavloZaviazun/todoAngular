@@ -1,0 +1,14 @@
+<div>
+  <form [formGroup]="formSearch">
+    <div>
+    <label>
+      <input name="search" formControlName="search" type="search" (keyup)="sendData()" placeholder="Title search">
+    </label>
+    </div>
+  </form>
+</div>
+<div *ngFor="let todoList of todoLists | async">
+  <app-todolist [todoList]="todoList"></app-todolist>
+</div>
+<button (click)="changeFlag()">Add todoList</button>
+<div *ngIf="isShownFormList"><app-formlist></app-formlist></div>

@@ -1,0 +1,22 @@
+<form [formGroup]="formTodo" (ngSubmit)="sendData()">
+<div [className]="['form-todo']">
+    <div>
+      <label>
+        <input name="title" formControlName="title" type="text" placeholder="Todo title">
+      </label>
+    </div>
+    <div>
+      <label>
+        <input name="body" formControlName="body" type="text" placeholder="Todo body">
+      </label>
+    </div>
+    <div>
+      <label>
+        <input name="finalDate" formControlName="finalDate" type="date">
+      </label>
+    </div>
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+</div>
+</form>

@@ -1,0 +1,12 @@
+<div>
+  <form [formGroup]="formList" (ngSubmit)="sendData()">
+  <div>
+    <label>
+      <input name="title" formControlName="title" type="text" placeholder="List title">
+    </label>
+  </div>
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</div>

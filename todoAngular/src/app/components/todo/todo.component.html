@@ -1,0 +1,12 @@
+<div [className]="['todo']">
+  <div>{{todo.id}}</div>
+  <div>{{todo.title}}</div>
+  <div>{{todo.body}}</div>
+  <div>{{todo.finalDate}}</div>
+  <div><button (click)="changeFlag()">Edit</button></div>
+  <div><button (click)="deleteTodo()">Delete</button></div>
+</div>
+<div *ngIf="isShownFormTodo">
+  <app-edittodo [vari]="todo.id" [id]="id" [todo]="todo"></app-edittodo>
+</div>
+

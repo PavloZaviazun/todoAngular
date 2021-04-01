@@ -1,0 +1,12 @@
+<div [className]="['todo-list']">
+  <div>{{todoList.id}}</div>
+  <div>{{todoList.title}}</div>
+  <div>{{updatedCrDate}} {{updatedCrTime}}</div>
+  <div>{{updatedUpDate}} {{updatedUpTime}}</div>
+  <div><button (click)="showTodos()">Show todos</button></div>
+  <div><button (click)="changeFlag()">Edit</button></div>
+  <div><button (click)="deleteList(todoList.id)">Delete</button></div>
+</div>
+<div *ngIf="isShownFormList">
+  <app-editlist [titleInput]="todoList.title" [id]="todoList.id"></app-editlist>
+</div>
