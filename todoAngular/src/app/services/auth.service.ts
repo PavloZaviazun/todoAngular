@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {URL} from '../config';
+import {log} from 'util';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  mystorage = window.localStorage;
   constructor(private httpClient: HttpClient) { }
 
   loginAttempt(user): void {
-    this.httpClient.post<any>(URL.auth, JSON.stringify(user)).subscribe(el => el);
+    const her = this.httpClient.post(URL.auth, JSON.stringify(user), {observe : 'response'}).subscribe(el => {
+      console.log(el);
+      this.mystorage.setItem('token', el.headers.get('Authorization'));
+    });
   }
 }
 // , {

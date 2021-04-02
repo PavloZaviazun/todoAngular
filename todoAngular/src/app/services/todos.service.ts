@@ -11,11 +11,12 @@ import {FormGroup} from '@angular/forms';
 export class TodosService {
   public entities: BehaviorSubject<ITodo[]> = new BehaviorSubject<ITodo[]>([]);
   private todos: ITodo[] = [];
+  mystorage = window.localStorage;
 
   constructor(private httpClient: HttpClient) { }
 
   getTodos(id: string): void {
-    this.httpClient.get<ITodo[]>(`${URL.list}/${id}/todos`).subscribe(todos => {
+    this.httpClient.get<ITodo[]>(`${URL.list}/${id}/todos`, {headers: {Authorization: this.mystorage.getItem('token')}}).subscribe(todos => {
       this.todos = todos;
       this.entities.next(this.todos);
     });

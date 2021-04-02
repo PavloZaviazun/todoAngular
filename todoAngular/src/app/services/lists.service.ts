@@ -11,10 +11,12 @@ export class ListsService {
 
   public entities: BehaviorSubject<ITodoList[]> = new BehaviorSubject<ITodoList[]>([]);
   private todoList: ITodoList[] = [];
+  mystorage = window.localStorage;
 
   constructor(private httpClient: HttpClient) { }
   getTodoLists(): void {
-    this.httpClient.get<ITodoList[]>(URL.lists).subscribe(todoList => {
+    console.log(this.mystorage.getItem('token'));
+    this.httpClient.get<ITodoList[]>(URL.lists, {headers: {Authorization: this.mystorage.getItem('token')}}).subscribe(todoList => {
       this.todoList = todoList;
       this.entities.next(this.todoList);
     });
